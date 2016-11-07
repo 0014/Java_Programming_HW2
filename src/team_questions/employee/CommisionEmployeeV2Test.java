@@ -5,18 +5,18 @@ package team_questions.employee;
  */
 public class CommisionEmployeeV2Test {
     public static void main(String[]args){
-        CommisionEmployeeV2 testObject = new CommisionEmployeeV2("Sue","Jones","222-22-2222",10000,.06);
+        CommisionEmployeeV2 empObject = new CommisionEmployeeV2( "Gerald", "Jones", "712-63-5277",10000,.06);
 
-        System.out.println("Employee information obtained by get methods:");
-        System.out.printf("%s %s%n","first name is",testObject.getFirstName());
-        System.out.printf("%s %s%n","last name is",testObject.getLastName());
-        System.out.printf("%s %s%n","social security number is",testObject.getSocialSecurityNumber());
-        System.out.printf("%s %.2f%n","gross sales is",testObject.getGrossSales());
-        System.out.printf("%s %.2f%n","commission rate is",testObject.getCommissionRate());
+        System.out.println("Employee information by get methods:");
+        System.out.printf("%s %s%n","first name is",empObject.getFirstName());
+        System.out.printf("%s %s%n","last name is",empObject.getLastName());
+        System.out.printf("%s %s%n","social security number is",empObject.getSocialSecurityNumber());
+        System.out.printf("%s %.2f%n","gross sales is",empObject.getGrossSales());
+        System.out.printf("%s %.2f%n","commission rate is",empObject.getCommissionPercentage());
 
-        testObject.setGrossSales(5000);
-        testObject.setCommissionRate(.1);
+        empObject.setGrossSales(5000);
+        empObject.setCommissionRate(.1);
 
-        System.out.printf("%n%s:%n%n%s%n","Updated employee infomation obtained by toString",testObject);
+        System.out.printf("%n%s:%n%n%s%n","Updated employee infomation by toString",empObject);
     }
 }

@@ -1,17 +1,14 @@
 package team_questions.employee;
 
-/**
- * Created by FreakingM on 10/20/2016.
- */
 public class Employee {
     protected final String firstName;
     protected final String lastName;
-    protected final String socialSecurityNumber;
+    protected final String ssn;
 
-    public Employee(String firstName,String lastName,String socialSecurityNumber) {
+    public Employee(String firstName,String lastName,String ssn) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.socialSecurityNumber =socialSecurityNumber;
+        this.ssn =ssn;
     }
     public String getFirstName(){
         return firstName;
@@ -20,9 +17,9 @@ public class Employee {
         return lastName;
     }
     public String getSocialSecurityNumber() {
-       return socialSecurityNumber;
+       return ssn;
     }
     public String toString(){
-        return String.format("%s: %s%n%s: %s%n%s: %s%n","first name",firstName,"last name",lastName,"social security number",socialSecurityNumber);
+        return String.format("%s: %s%n%s: %s%n%s: %s%n","first name",firstName,"last name",lastName,"social security number",ssn);
     }
 }

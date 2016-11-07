@@ -1,41 +1,46 @@
 package team_questions.employee;
 
-/**
- * Created by FreakingM on 10/20/2016.
- */
 public class CommisionEmployeeV2 extends Employee {
     private double grossSales;
-    private double commissionRate;
-    public CommisionEmployeeV2(String firstName,String lastName, String socialSecurityNumber,double grossSales,double commissionRate){
-        super(firstName,lastName,socialSecurityNumber);
+    private double commissionPercetnage;
+    public CommisionEmployeeV2(String firstName,String lastName, String ssn,double grossSales,double commissionPercetnage){
+        super(firstName,lastName,ssn);
         if(grossSales<0.0)
-            throw new IllegalArgumentException("gross sales should be lager than 0");
+            throw new IllegalArgumentException("gross sales has be lager than 0");
         this.grossSales = grossSales;
-        if((commissionRate<0)||(commissionRate>1))
-            throw new IllegalArgumentException("commission rate should be less than 1 and larger than 0");
-        this.commissionRate = commissionRate;
+        if((commissionPercetnage<0)||(commissionPercetnage>1))
+            throw new IllegalArgumentException("commission percentage has be less than 1 and larger than 0");
+        this.commissionPercetnage = commissionPercetnage;
     }
     public void setCommissionRate(double commissionRate) {
         if ((commissionRate < 0) || (commissionRate >= 1))
-            throw new IllegalArgumentException("commision rate must >0 and <1");
-        this.commissionRate = commissionRate;
+            throw new IllegalArgumentException("commision rate has to be >0 and <1");
+        this.commissionPercetnage = commissionRate;
     }
+    //Setting GrossSales
     public void setGrossSales(double grossSales){
         if(grossSales<0.0)
-            throw new IllegalArgumentException("gross sales should be lager than 0");
+            throw new IllegalArgumentException("gross sales has to be lager than 0");
         this.grossSales = grossSales;
     }
+    
+    //Getting Gross Sales
     public double getGrossSales(){
         return grossSales;
     }
-    public double getCommissionRate(){
-     return commissionRate;
+    //Getting Comission Percentage
+    public double getCommissionPercentage(){
+     return commissionPercetnage;
     }
+    
+    //Overriding earnings()
     public double earning(){
-        return grossSales*commissionRate;
+        return grossSales*commissionPercetnage;
     }
+    
+    //Overriding toString()
     @Override
     public String toString(){
-        return super.toString()+String.format("%s: %.2f%n%s: %.2f%n%s: %.2f%n","gross sales",grossSales,"commission rate",commissionRate,"earning",earning());
+        return super.toString()+String.format("%s: %.2f%n%s: %.2f%n%s: %.2f%n","gross sales",grossSales,"commission rate",commissionPercetnage,"earning",earning());
     }
 }

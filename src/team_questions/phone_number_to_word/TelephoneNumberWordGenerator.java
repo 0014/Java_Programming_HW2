@@ -4,9 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Iterator;
-/**
- * Created by FreakingM on 10/27/2016.
- */
+
 public class TelephoneNumberWordGenerator {
     static int i;
     static int[] number;
@@ -15,11 +13,10 @@ public class TelephoneNumberWordGenerator {
     static PrintStream output;
 
     public static void main(String[] args) {
-        //create number-word pairs table
+
         char[][] table = {{'A', 'B', 'C'}, {'D', 'E', 'F'}, {'G', 'H', 'I'}, {'J', 'K', 'L'},
                 {'M', 'N', 'O'}, {'P', 'R', 'S'}, {'T', 'U', 'V'}, {'W', 'X', 'Y'}};
 
-        //create 7-digit ternary number. using a,b,c,d,e,f,g indicate each digit.
         int a = 0;
         int b = 0;
         int c = 0;
@@ -29,10 +26,10 @@ public class TelephoneNumberWordGenerator {
         int g = 0;
 
         System.out.println("please type your telephone number");
-        inputNumber();//call inputNumber() to input 7-digit number without '0' and '1',and
-        //stores the numbers in integer array number[].
+        inputNumber();
 
-        //make the 7-digit ternary number increase from 0000000 to 2222222
+
+      
         for (g =0; g <= 3; g++) {
             if (g == 3) {
                 f += 1;
@@ -60,9 +57,7 @@ public class TelephoneNumberWordGenerator {
             }
             if (a == 3)
                 break;
-            //get the word combination according to the table,
-            //and store the result in a StringBuilder words.
-
+  
             words.append(table[number[0] - 2][a])
                     .append(table[number[1] - 2][b])
                     .append(table[number[2] - 2][c])
@@ -70,20 +65,20 @@ public class TelephoneNumberWordGenerator {
                     .append(table[number[4] - 2][e])
                     .append(table[number[5] - 2][f])
                     .append(table[number[6] - 2][g]);
-            wordConbination.add(words.toString());//store every possible word-combination in an ArrayList.
+            wordConbination.add(words.toString());
             words.delete(0, 7);
         }
-           openFile();//call openFile() to create a file, and print out the file location.
-           addRecords();//call addRecords() to output all word-combination result to the file.
+           openFile();
+           addRecords();
 
         }
 
     public static void openFile(){
         try {
-           File file = new File("wordConbinations.txt");//create new text file.
+           File file = new File("wordConbinations.txt");
             System.out.println("find the result in: ");
-            System.out.println(file.getAbsolutePath());//show the file location.
-            output = new PrintStream(file);//initialize printStream object
+            System.out.println(file.getAbsolutePath());
+            output = new PrintStream(file);
         }catch(IOException ioException) {
             System.err.println("Error opening file. Terminating");
             System.exit(1);
@@ -91,34 +86,34 @@ public class TelephoneNumberWordGenerator {
     }
 
     public static void addRecords(){
-      Iterator namesIterator = wordConbination.iterator();//use iterator to iterate all elements of ArrayList wordConbination.
+      Iterator namesIterator = wordConbination.iterator();
        while (namesIterator.hasNext())
-               output.format("%s%n",namesIterator.next());//add all elements to the file by using method format() in PrintStream class.
+               output.format("%s%n",namesIterator.next());
     }
 
     public static void inputNumber(){
-       number=new int[7];//initialize the integer array.
-        boolean flag = true;// use a flag as the end loop condition.
+       number=new int[7];
+        boolean flag = true;
         while(flag) {
                 Scanner input = new Scanner(System.in);
                 String telephoneNumber = input.nextLine();
-            //make sure entered 7-digit number
+
                 if (telephoneNumber.length() != 7) {
                     System.out.println("type 7-digit. Try again");
                     telephoneNumber = input.nextLine();
                 }
-                //create a String array using every digit as the element.
+
                 String[] numberArray = telephoneNumber.split("");
                 for(i =0;i<7;i++){
-                    //transfer the String array to integer array.
+
                   number[i]=Character.digit(numberArray[i].charAt(0),10);
-                    //make sure 0 was not entered
+
                     if(number[i]==0) {
                         System.out.println("please don't type 0, and try again: ");
                         inputNumber();
                         break;
                     }
-                    //make sure 1 was not entered
+
                     if(number[i]==1) {
                         System.out.println("please don't type 1, and try again: ");
                         inputNumber();
